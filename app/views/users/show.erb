@@ -1,0 +1,52 @@
+<%content_cell do -%>
+
+  <div class="cc">
+
+    <div class="cmain">
+      <div class="cin">
+
+        <% if current_user == User.find(params[:id]) %>
+          <div>
+            <%=render :partial=>"shares/form_share_only_content",:locals=>{:share=>Share.new}%>
+          </div>
+        <% end %>
+
+        <h3><%=@user.name%>的分享</h3>
+        <div>
+          <% mplist @user_shares,:for=>[@user,Share],:class=>"shares" %>
+          <%= will_paginate @user_shares,{:position=>:paper} %>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="cright">
+      <div class="cin">
+        <!-- 个人信息 -->
+        <%=render :partial=>'users/parts/user_page_info',:locals=>{:user=>@user}%>
+
+        <h3>成就</h3>
+        <div class="marginb3em">
+        </div>
+
+
+        <h3>已安装的应用</h3>
+      </div>
+    </div>
+
+  </div>
+
+<%end%>
+
+<% content_for :javascripts do %>
+  <%= javascript_include_tag 'views/tab_box' %>
+  <%= javascript_include_tag 'views/show_share_content' %>
+<% end %>
+
+<% content_for :head do %>
+  <%= stylesheet_link_tag "views/share"%>
+  <%= stylesheet_link_tag "/javascripts/prototip/css/prototip"%>
+  <%= stylesheet_link_tag "/stylesheets/views/rss" %>
+  <%= stylesheet_link_tag "/stylesheets/views/reader" %>
+<% end %>
+
