@@ -2,5 +2,5 @@
   <%= shareable_brief_content(shareable) %>
   <%= f.text_area :content,:show_label=>false %>
   <%= f.hidden_field :kind, :value=>Share::SHARE %>
-  <%= f.submit t("page.form.share") %>
+  <%= f.submit "分享" %>
 <% end %>

@@ -1,6 +1,6 @@
 <% if share.shareable %>
   <div class="quote_content padding10 margint5 width500 marginl10" >
-    <%= meta share %>
+    <%=render :partial=>"shares/meta_share",:locals=>{:share=>share}%>
   </div>
 <% end %>
 
