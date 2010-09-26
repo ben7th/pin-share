@@ -14,6 +14,7 @@ ActionController::Routing::Routes.draw do |map|
   end
 
   map.url_code '/url/:code',:controller=>"short_urls",:action=>"show"
+  map.resources :contactings,:controller=>'contactings',:collection=>{:selector=>:get}
 
   map.resources :users do |user|
     user.resource :entry_show,:collection=>{:iframe=>:get}
