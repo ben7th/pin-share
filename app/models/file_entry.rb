@@ -15,8 +15,8 @@
 class FileEntry < ActiveRecord::Base
   include Entry::ResourceMethods
 
-  @file_path = "#{ATTACHED_FILE_PATH_ROOT}:class/:attachment/:id/:style/:basename.:extension"
-  @file_url = "#{ATTACHED_FILE_URL_ROOT}:class/:attachment/:id/:style/:basename.:extension"
+  @file_path = "#{UserBase::LOGO_PATH_ROOT}:class/:attachment/:id/:style/:basename.:extension"
+  @file_url = "#{UserBase::LOGO_URL_ROOT}:class/:attachment/:id/:style/:basename.:extension"
   has_attached_file :content,
     :path => @file_path,
     :url => @file_url,
@@ -112,7 +112,6 @@ class FileEntry < ActiveRecord::Base
 
   require 'zip/zipfilesystem'
   require 'zip/zip'
-  require 'uuidtools'
   # 导出host中的所有附件到一个zip文件中
   def to_zip
     zip_path = Dir::tmpdir + '/'+ UUID.random_create.to_s + ".zip"

@@ -13,7 +13,7 @@
 
 class Entry < ActiveRecord::Base
   include Pacecar
-  acts_as_paranoid
+  is_paranoid
 
   belongs_to :resource,:polymorphic => true
   belongs_to :host,:polymorphic=>true
@@ -130,7 +130,7 @@ class Entry < ActiveRecord::Base
 
   module ResourceMethods
     def self.included(base)
-      base.has_one :entry,:as => :resource,:with_deleted=>true
+      base.has_one :entry,:as => :resource
       base.after_update :update_entry_update_time
     end
 

@@ -115,15 +115,15 @@ class Share < ActiveRecord::Base
 
     # 分享内容中的思维导图链接
     # 返回 {"缩略图链接"=>原图链接}
-    def mindmap_urls
-      re = %r{#{THIS_SITE}app/#{App::MINDMAP_EDITOR}/mindmaps/([^\"\'\s]*)}
-      urls_hash = {}
-      self.content.gsub(re) do
-        key = "#{IMAGE_CACHE_SITE}images/#{$1}.png?size_param=120x90"
-        urls_hash[key] = "#{$&}.png"
-      end
-      urls_hash
-    end
+#    def mindmap_urls
+#      re = %r{#{THIS_SITE}app/#{App::MINDMAP_EDITOR}/mindmaps/([^\"\'\s]*)}
+#      urls_hash = {}
+#      self.content.gsub(re) do
+#        key = "#{IMAGE_CACHE_SITE}images/#{$1}.png?size_param=120x90"
+#        urls_hash[key] = "#{$&}.png"
+#      end
+#      urls_hash
+#    end
   end
 
   # 分享内容中的 bugs 链接
@@ -157,4 +157,5 @@ class Share < ActiveRecord::Base
 
   include Share::ShareableMethods
   include Feeling::FeelableMethods
+  include Using::ShareMethods
 end

@@ -78,6 +78,17 @@ class CreateAllTables < ActiveRecord::Migration
 
     add_index "usings", ["entry_id"], :name => "index_usings_on_entry_id"
     add_index "usings", ["share_id"], :name => "index_usings_on_share_id"
+
+    create_table "contactings", :force => true do |t|
+      t.integer  "host_id"
+      t.integer  "contact_id"
+      t.datetime "created_at"
+      t.datetime "updated_at"
+      t.boolean  "show_share"
+    end
+
+    add_index "contactings", ["contact_id"], :name => "index_contacts_on_friend_id"
+    add_index "contactings", ["host_id"], :name => "index_contacts_on_host_id"
   end
 
   def self.down

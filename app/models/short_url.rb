@@ -64,7 +64,7 @@ class ShortUrl < ActiveRecord::Base
 
   # 返回这个short_url对应的地址
   def short_url_str
-    return "#{THIS_SITE}url/#{self.code}"
+    return File.join(THIS_SITE,"url/#{self.code}")
   end
 
 end

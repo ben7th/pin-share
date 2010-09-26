@@ -5,5 +5,5 @@
 
 <!-- 显示share使用的bookmark_entries -->
 <% share.entries.each do |entry| %>
-  <%= meta entry %>
+  <%=render :partial=>"entries/meta_entry",:locals=>{:entry=>entry}%>
 <% end %>

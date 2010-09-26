@@ -28,9 +28,9 @@ class SharesController < ApplicationController
   def render_success(share)
     render_ui do |ui|
       # 首先，在列表里插入一行
-      ui.mplist :insert,[share.creator,share],:partial=>"/shares/info_share",:prev=>"TOP"
+      ui.mplist :insert,[share.creator,share],:partial=>"/shares/parts/mpinfo_share",:prev=>"TOP"
       # 关闭浮动窗
-      ui.page.close_box
+      ui.fbox :close
       # 刷新叶面计数
       _refresh_share_count(ui,@shareable)
     end

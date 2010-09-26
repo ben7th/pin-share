@@ -20,4 +20,5 @@ ActionController::Routing::Routes.draw do |map|
     user.resources :follows
     user.resources :fans
   end
+  map.root :controller=>'index'
 end

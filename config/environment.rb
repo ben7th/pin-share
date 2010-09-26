@@ -6,6 +6,7 @@ RAILS_GEM_VERSION = '2.3.8' unless defined? RAILS_GEM_VERSION
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 
+
 Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
@@ -21,8 +22,15 @@ Rails::Initializer.run do |config|
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem "pie-auth"
   config.gem "pie-ui"
-#  config.gem "nokogiri"
+  config.gem "nokogiri"
   config.gem "haml"
+  config.gem "pacecar"
+  config.gem 'mislav-will_paginate',:lib => 'will_paginate'
+  config.gem "uuidtools"
+  config.gem "responds_to_parent"
+  config.gem "is_paranoid"
+
+
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
   # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
@@ -42,3 +50,4 @@ Rails::Initializer.run do |config|
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
 end
+THIS_SITE = pin_url_for("pin-share")
