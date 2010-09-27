@@ -30,7 +30,6 @@ module ShareHelper
     when Share
       if shareable.shareable
         return render :partial=>"shares/meta_share",:locals=>{:share=>shareable}
-#        return meta shareable
       end
       return share_content(shareable)
     end
