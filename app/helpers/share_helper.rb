@@ -28,8 +28,9 @@ module ShareHelper
     return "" if shareable.blank?
     case shareable
     when Share
-      if shareable.shareable 
-        return meta shareable
+      if shareable.shareable
+        return render :partial=>"shares/meta_share",:locals=>{:share=>shareable}
+#        return meta shareable
       end
       return share_content(shareable)
     end
