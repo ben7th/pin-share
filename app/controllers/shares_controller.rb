@@ -1,10 +1,20 @@
 class SharesController < ApplicationController
   before_filter :per_load
+  skip_before_filter :verify_authenticity_token,:only=>:add_on_shares
 
   def new
     render_ui do |ui|
       ui.fbox :show,:title=>"分享",:partial=>"/shares/form_share",:locals=>{:share => Share.new,:shareable=>@shareable}
     end
+  end
+
+  def add_on_shares
+    share = Share.new(:content=>params[:content],:kind=>Share::TALK)
+    share.creator = current_user
+    if share.save
+      return render :text=>"200",:status=>200
+    end
+    return render :text=>"500",:status=>500
   end
 
   def create

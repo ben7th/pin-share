@@ -13,6 +13,8 @@ ActionController::Routing::Routes.draw do |map|
     share.resource :feeling
   end
 
+  map.add_on_share "/add_on_shares",:controller=>"shares",:action=>"add_on_shares",:conditions=>{:method=>:post}
+
   map.url_code '/url/:code',:controller=>"short_urls",:action=>"show"
   map.resources :contactings,:controller=>'contactings',:collection=>{:selector=>:get}
 
